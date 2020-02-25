@@ -26,6 +26,21 @@ namespace Loja.Infra.Linq.Repositorio
             categoria.Nome = nome;
 
             linq.SubmitChanges();
+        }   
+        
+        public void ExcluirCategoria(int id)
+        {
+            LojaLinqToSqlDataContext linq = new LojaLinqToSqlDataContext();
+            var categoria = linq.Categorias.First(x => x.Id == id);
+            linq.Categorias.DeleteOnSubmit(categoria);
+            linq.SubmitChanges();
         }
+
+        public List<Produto> ListarProdutos()
+        {
+            LojaLinqToSqlDataContext linq = new LojaLinqToSqlDataContext();
+            return linq.Produtos.ToList();
+        }
+
     }
 }

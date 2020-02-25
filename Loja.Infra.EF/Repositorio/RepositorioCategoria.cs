@@ -25,6 +25,21 @@ namespace Loja.Infra.EF.Repositorio
             var categoria = ef.Categoria.First(x => x.Id == id);
             categoria.Nome = nome;
             ef.SaveChanges();
+        }    
+        
+        public void ExcluirCategoria(int id)
+        {
+
+            LojaEFEntities ef = new LojaEFEntities();
+            var categoria = ef.Categoria.First(x => x.Id == id);
+            ef.Categoria.Remove(categoria);
+            ef.SaveChanges();
+        }
+
+        public List<Produtos> ListarProdutos()
+        {
+            LojaEFEntities ef = new LojaEFEntities();
+            return ef.Produtos.ToList();
         }
     }
 }
