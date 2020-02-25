@@ -39,7 +39,7 @@ namespace Loja.Infra.EF.Repositorio
         public List<Produtos> ListarProdutos()
         {
             LojaEFEntities ef = new LojaEFEntities();
-            return ef.Produtos.ToList();
+            return ef.Produtos.AsNoTracking().ToList();
         }
     }
 }

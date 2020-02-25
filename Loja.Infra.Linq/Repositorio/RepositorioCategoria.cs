@@ -39,7 +39,7 @@ namespace Loja.Infra.Linq.Repositorio
         public List<Produto> ListarProdutos()
         {
             LojaLinqToSqlDataContext linq = new LojaLinqToSqlDataContext();
-            return linq.Produtos.ToList();
+            return linq.Produtos.AsParallel().ToList();
         }
 
     }
